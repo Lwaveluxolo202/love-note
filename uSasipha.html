@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Note</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            position: relative;
+            z-index: 1;
+            color: #ff69b4;
+            font-size: 3em;
+            animation: kissAnimation 2s infinite;
+        }
+        @keyframes kissAnimation {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .firework {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 1.5em;
+            opacity: 0;
+            animation: explode 1s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Ndiyakuthanda uSasipha neh!!💋</h1>
+    <div class="firework"></div>
+
+    <script>
+        function createHeartFirework() {
+            const firework = document.querySelector('.firework');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.animationDelay = Math.random() * 0.5 + 's';
+
+            firework.appendChild(heart);
+
+            // Remove the heart after the animation
+            heart.addEventListener('animationend', () => heart.remove());
+        }
+
+        // Generate heart fireworks at intervals
+        setInterval(createHeartFirework, 300);
+    </script>
+</body>
+</html>
+
